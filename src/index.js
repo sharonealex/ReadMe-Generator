@@ -1,62 +1,93 @@
 //Import node package for inquirer module.
-const inquirer = require('inquirer');
+const inquirer = require("inquirer");
+
+//Function to insert the user inputs into the standard ReadMe template.
+function populateMarkupTemplate(readmeValues) {
+    return `# ${readmeValues.projectTitle}
+      
+  #### Table of Contents
+  1. [Project Description](#project-description)
+  2. [Installation Instructions](#installation-instructions)
+  3. [Usage Information](#usage-information)
+  4. [Contributor Guidelines](#contributor-guidelines)
+  5. [Code of Conduct](#code-of-conduct)
+  6. [Test Instructions](#test-instructions)
+  7. [License](#license)
+  8. [Questions](#questions)
+
+  ## Project Description
+  * ${readmeValues.projectDescription}
+  ## Installation Steps
+  * ${readmeValues.projectInstallation}
+  ## Usage Information
+  * ${readmeValues.projectUsage}
+  ## Credits for Contribution
+  * ${readmeValues.projectCredits}
+  ## Test Instructions
+  * ${readmeValues.projectTests}
+  ## License
+  * licensed under the ${readmeValues.projectLicense}
+  ## Questions
+  * Follow me on Github at [${readmeValues.projectDeployedURL}](${readmeValues.projectDeployedURL})`;
+}
 
 //Function that collects user inputs required to create the readme doco.
-function getUserInputs(){
-
+function getUserInputs() {
     return inquirer.prompt([
         {
             type: "input",
-            name: "Project_Title",
-            message: "What is your project tittled?"
-          },
-          {
+            name: "projectTitle",
+            message: "What is your project tittled?",
+        },
+        {
             type: "input",
-            name: "Description",
-            message: "Provide a short description"
-          },
-          {
+            name: "projectDescription",
+            message: "Provide a short description",
+        },
+        {
             type: "input",
-            name: "Installation",
-            message: "What are the steps required to install your project?"
-          },
-          {
+            name: "projectInstallation",
+            message: "What are the steps required to install your project?",
+        },
+        {
             type: "input",
-            name: "Usage",
-            message: "Provide instructions and examples for usage"
-          },
-          {
+            name: "projectUsage",
+            message: "Provide instructions and examples for usage",
+        },
+        {
             type: "input",
-            name: "Credits",
-            message: "List your collaborators, if any, with links to their GitHub profiles."
-          },
-          {
+            name: "projectCredits",
+            message:
+                "List your collaborators, if any, with links to their GitHub profiles.",
+        },
+        {
             type: "input",
-            name: "Tests",
-            message: "Please provide examples on how to run tests here"
-          },
-          {
+            name: "projectTests",
+            message: "Please provide examples on how to run tests here",
+        },
+        {
             type: "checkbox",
             message: "License?",
-            name: "License",
+            name: "projectLicense",
             choices: [
-              "[MIT License](LICENSE.txt)", 
-              "[GNU GPLv3 License](COPYING.txt)", 
-            ]
-          },
-         
-          {
+                "[MIT License](LICENSE.txt)",
+                "[GNU GPLv3 License](COPYING.txt)",
+            ],
+        },
+
+        {
             type: "input",
-            name: "githubDeployedURL",
-            message: "Enter your github application URL"
-          }
-        ]);
-      }
+            name: "projectDeployedURL",
+            message: "Enter your github application URL",
+        },
+    ]);
+}
 
 getUserInputs()
-  .then(function(answers) {
-   console.log(answers);
-  })
-  .catch(function(err) {
-    console.log(err);
-  });
+    .then(function (userInputs) {
+        console.log(userInputs);
+        const generatedReadMe = populateMarkupTemplate(userInputs);
+    })
+    .catch(function (err) {
+        console.log(err);
+    });
