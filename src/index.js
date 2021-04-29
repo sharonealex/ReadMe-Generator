@@ -1,41 +1,7 @@
 //Import node package for inquirer module and file module
 const inquirer = require("inquirer");
 const fsPromises = require('fs').promises;
-
-/**
- * @param {*} readmeValues 
- * @returns populated Readme string.
- */
-function populateMarkupTemplate(readmeValues) {
-    return `# ${readmeValues.projectTitle}
-      
-  #### Table of Contents
-  1. [Project Description](#project-description)
-  2. [Installation Instructions](#installation-instructions)
-  3. [Usage Information](#usage-information)
-  4. [Contributor Guidelines](#contributor-guidelines)
-  5. [Code of Conduct](#code-of-conduct)
-  6. [Test Instructions](#test-instructions)
-  7. [License](#license)
-  8. [Questions](#questions)
-
-  ## Project Description
-  * ${readmeValues.projectDescription}
-  ## Installation Steps
-  * ${readmeValues.projectInstallation}
-  ## Usage Information
-  * ${readmeValues.projectUsage}
-  ## Credits for Contribution
-  * ${readmeValues.projectCredits}
-  ## Test Instructions
-  * ${readmeValues.projectTests}
-  ## License
-  * licensed under the ${readmeValues.projectLicense}
-  ## Questions
-  * Follow me on Github at [${readmeValues.projectDeployedURL}](${readmeValues.projectDeployedURL})`;
-}
-
-//
+const generateMarkdown = require('../src/utils/generateMarkdown')
 
 /**
  * Function that collects user inputs required to create the readme doco.
@@ -89,7 +55,18 @@ function getUserInputs() {
             name: "projectDeployedURL",
             message: "Enter your github application URL",
         },
+
+        {
+            type: "input",
+            name: "projectQuestionsEmail",
+            message: "Enter your email for any follow up questions",
+        },
     ]);
+}
+
+function writeToFile(data) {
+    const fileName = "README.md";
+    return fsPromises.writeFile("README.md", data)
 }
 
 /**
@@ -98,13 +75,15 @@ function getUserInputs() {
  */
 
 getUserInputs()
-    .then(populateMarkupTemplate)
-    .then((data) => {
-        return fsPromises.writeFile("README.md", data)
-    })
+    .then(generateMarkdown)
+    .then(writeToFile)
     .then(() => {
         console.log("===ReadMe created for your project successcfully===")
     })
     .catch(function (err) {
         console.log(err);
     });
+
+init(getUserInputs())    
+
+init();    
