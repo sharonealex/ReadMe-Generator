@@ -41,8 +41,9 @@ const questions = [
         message: "License?",
         name: "projectLicense",
         choices: [
-            "[MIT License](LICENSE.txt)",
-            "[GNU GPLv3 License](COPYING.txt)",
+            "MIT",
+            "Apache",
+            "None"
         ],
     },
     {
@@ -61,6 +62,7 @@ const questions = [
  * Function to write the generated ReadMe to a .md file.
  */
 function writeToFile(data) {
+    console.log(data)
     const fileName = "README.md";
     return fsPromises.writeFile("README.md", data)
 }

@@ -16,7 +16,7 @@ function renderLicenseSection(license) {}
  * @returns populated Readme string and generate the markdown.
  */
  function generateMarkdown(readmeValues) {
-    return `# ${readmeValues.projectTitle}
+    return `# ${readmeValues.projectTitle} [![license](https://img.shields.io/badge/license-${readmeValues.projectLicense}-blue)](https://shields.io)
       
   #### Table of Contents
   1. [Project Description](#project-description)
