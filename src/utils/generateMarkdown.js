@@ -23,18 +23,17 @@ function renderLicenseSection(license) {}
   2. [Installation Instructions](#installation-instructions)
   3. [Usage Information](#usage-information)
   4. [Contributor Guidelines](#contributor-guidelines)
-  5. [Code of Conduct](#code-of-conduct)
-  6. [Test Instructions](#test-instructions)
-  7. [License](#license)
-  8. [Questions](#questions)
+  5. [Test Instructions](#test-instructions)
+  6. [License](#license)
+  7. [Questions](#questions)
 
   ## Project Description
   * ${readmeValues.projectDescription}
-  ## Installation Steps
+  ## Installation Instructions
   * ${readmeValues.projectInstallation}
   ## Usage Information
   * ${readmeValues.projectUsage}
-  ## Credits for Contribution
+  ## Contributor Guidelines
   * ${readmeValues.projectCredits}
   ## Test Instructions
   * ${readmeValues.projectTests}
