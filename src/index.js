@@ -112,9 +112,8 @@ const questions = [
  * Function to write the generated ReadMe to a .md file.
  */
 function writeToFile(data) {
-    console.log(data)
-    const fileName = "README.md";
-    return fsPromises.writeFile("README.md", data)
+    const fileName = "SampleREADME.md";
+    return fsPromises.writeFile(fileName, data)
 }
 
 /**
