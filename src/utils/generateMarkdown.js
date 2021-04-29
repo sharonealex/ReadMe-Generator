@@ -23,6 +23,7 @@ function renderLicenseSection(license) {}
   2. [Installation Instructions](#installation-instructions)
   3. [Usage Information](#usage-information)
   4. [Contributor Guidelines](#contributor-guidelines)
+  5. [Credits](#credits)
   5. [Test Instructions](#test-instructions)
   6. [License](#license)
   7. [Questions](#questions)
@@ -34,13 +35,18 @@ function renderLicenseSection(license) {}
   ## Usage Information
   * ${readmeValues.projectUsage}
   ## Contributor Guidelines
+  * ${readmeValues.projectContribution}
+  ## Credits
   * ${readmeValues.projectCredits}
   ## Test Instructions
   * ${readmeValues.projectTests}
   ## License
   * licensed under the ${readmeValues.projectLicense}
   ## Questions
-  * Follow me on Github at [${readmeValues.projectDeployedURL}](${readmeValues.projectQuestionsEmail})`;
+  * Follow me on Github - Github: [${readmeValues.gitHubURL}](https://github.com/${readmeValues.gitHubURL})
+  * Reach out to me on email: ${readmeValues.email}
+  `
+  
 }
 
 

@@ -8,17 +8,41 @@ const questions = [
     {
         type: "input",
         name: "projectTitle",
-        message: "What is your project titled?",
+        message: "What is your project titled? (Required)",
+        validate: projectTitle => {
+            if (projectTitle) {
+                return true;
+            } else {
+                console.log('You need to enter a title to continue!');
+                return false;
+            }
+        }
     },
     {
         type: "input",
         name: "projectDescription",
-        message: "Provide a short description",
+        message: "Provide a short description (Required)",
+        validate: projectDescription => {
+            if (projectDescription) {
+                return true;
+            } else {
+                console.log('You need to enter a short description to continue!');
+                return false;
+            }
+        }
     },
     {
         type: "input",
         name: "projectInstallation",
-        message: "What are the steps required to install your project?",
+        message: "What are the steps required to install your project? (Required)",
+        validate: projectInstallation => {
+            if (projectInstallation) {
+                return true;
+            } else {
+                console.log('You need to enter steps for installation and setup!');
+                return false;
+            }
+        }
     },
     {
         type: "input",
@@ -33,28 +57,54 @@ const questions = [
     },
     {
         type: "input",
+        name: "projectContribution",
+        message:
+            "Describe contribution guidelines for submission of pull requests",
+    },
+    {
+        type: "input",
         name: "projectTests",
         message: "Please provide examples on how to run tests here",
     },
     {
         type: "checkbox",
-        message: "License?",
         name: "projectLicense",
-        choices: [
-            "MIT",
-            "Apache",
-            "None"
-        ],
+        message: "Choose License? (Required)",
+        choices: ['Apache', 'MIT', 'None'],
+        validate: projectLicense => {
+            if (projectLicense) {
+                return true;
+            } else {
+                console.log('You need to enter license of the project!');
+                return false;
+            }
+        }
     },
     {
         type: "input",
-        name: "projectDeployedURL",
-        message: "Enter your github application URL",
+        name: "gitHubURL",
+        message: "Enter your github application URL (Required)",
+        validate: gitHubURL => {
+            if (gitHubURL) {
+                return true;
+            } else {
+                console.log('You need to enter github application URL  project!');
+                return false;
+            }
+        }
     },
     {
         type: "input",
-        name: "projectQuestionsEmail",
-        message: "Enter your email for any follow up questions",
+        name: "email",
+        message: "Enter your email for any follow up questions (Required)",
+        validate: email => {
+            if (email) {
+                return true;
+            } else {
+                console.log('You need to enter email for further questions!');
+                return false;
+            }
+        }
     },
 ]
 
