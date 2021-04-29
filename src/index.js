@@ -1,8 +1,11 @@
-//Import node package for inquirer module.
+//Import node package for inquirer module and file module
 const inquirer = require("inquirer");
 const fsPromises = require('fs').promises;
 
-//Function to insert the user inputs into the standard ReadMe template.
+/**
+ * @param {*} readmeValues 
+ * @returns populated Readme string.
+ */
 function populateMarkupTemplate(readmeValues) {
     return `# ${readmeValues.projectTitle}
       
@@ -32,7 +35,12 @@ function populateMarkupTemplate(readmeValues) {
   * Follow me on Github at [${readmeValues.projectDeployedURL}](${readmeValues.projectDeployedURL})`;
 }
 
-//Function that collects user inputs required to create the readme doco.
+//
+
+/**
+ * Function that collects user inputs required to create the readme doco.
+ * @returns promise
+ */
 function getUserInputs() {
     return inquirer.prompt([
         {
@@ -84,18 +92,18 @@ function getUserInputs() {
     ]);
 }
 
-
+/**
+ * Function for entry point to get the User inputs to populate the readMe template, which then gets 
+ * written into a newly created .md file.
+ */
 
 getUserInputs()
     .then(populateMarkupTemplate)
     .then((data) => {
         return fsPromises.writeFile("README.md", data)
-            .then(() => {
-                console.log('JSON saved');
-            })
-            .catch(er => {
-                console.log(er);
-            });
+    })
+    .then(() => {
+        console.log("===ReadMe created for your project successcfully===")
     })
     .catch(function (err) {
         console.log(err);

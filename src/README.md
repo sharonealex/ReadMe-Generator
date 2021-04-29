@@ -13,13 +13,13 @@
   ## Project Description
   * sdfd
   ## Installation Steps
-  * dsfg
+  * sdfsd
   ## Usage Information
-  * sfd
+  * sdfds
   ## Credits for Contribution
-  * sd
+  * sdf
   ## Test Instructions
-  * sgd
+  * sdf
   ## License
   * licensed under the 
   ## Questions
