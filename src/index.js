@@ -1,5 +1,6 @@
 //Import node package for inquirer module.
 const inquirer = require("inquirer");
+const fsPromises = require('fs').promises;
 
 //Function to insert the user inputs into the standard ReadMe template.
 function populateMarkupTemplate(readmeValues) {
@@ -83,10 +84,18 @@ function getUserInputs() {
     ]);
 }
 
+
+
 getUserInputs()
-    .then(function (userInputs) {
-        console.log(userInputs);
-        const generatedReadMe = populateMarkupTemplate(userInputs);
+    .then(populateMarkupTemplate)
+    .then((data) => {
+        return fsPromises.writeFile("README.md", data)
+            .then(() => {
+                console.log('JSON saved');
+            })
+            .catch(er => {
+                console.log(er);
+            });
     })
     .catch(function (err) {
         console.log(err);
